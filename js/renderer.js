@@ -16,7 +16,7 @@ var Renderer = (function () {
       '<div id="narrative-pane"></div>' +
       '<div id="choices-pane"></div>' +
       '<div id="hud-pane">' +
-      '  <span class="hud-watermark">buaa · 葳蕤 · 出品</span>' +
+      '  <pre class="hud-watermark">' + AsciiArt.watermark + '</pre>' +
       '  <span class="hud-controls">' +
       '    <button class="hud-btn" id="btn-back" title="返回">&larr; 返回</button>' +
       '    <button class="hud-btn" id="btn-save" title="存档">存档</button>' +
