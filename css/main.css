@@ -1,0 +1,441 @@
+/* main.css - 全局样式 + 阵营主题配色 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #1a1a2e;
+  color: #e0d8c8;
+  font-family: 'Courier New', 'SimHei', 'Microsoft YaHei', monospace;
+  min-height: 100vh;
+  transition: background 0.8s, color 0.8s;
+}
+
+#game-root {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* ASCII 面板 */
+#ascii-pane {
+  text-align: center;
+  margin-bottom: 16px;
+  min-height: 60px;
+}
+
+#ascii-pane pre.ascii-art {
+  display: inline-block;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.15;
+  color: inherit;
+  white-space: pre;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* 图片面板 */
+#image-pane {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.scene-image {
+  display: block;
+  max-width: 100%;
+  max-height: 450px;
+  width: auto;
+  margin: 0 auto 12px;
+  border: 2px solid rgba(192, 160, 128, 0.4);
+  border-radius: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+/* 叙事面板 */
+#narrative-pane {
+  margin-bottom: 20px;
+  min-height: 100px;
+  line-height: 1.8;
+}
+
+.scene-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  letter-spacing: 2px;
+}
+
+.narrative-line {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.85;
+  text-indent: 2em;
+}
+
+.narrative-line.typing::after {
+  content: '▌';
+  animation: blink 0.7s infinite;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.narrative-line.typed {
+  text-indent: 2em;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0; }
+}
+
+/* 选择面板 */
+#choices-pane {
+  margin-top: 12px;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e0d8c8;
+  border: 1px solid rgba(192, 160, 128, 0.3);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.5px;
+}
+
+.choice-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(192, 160, 128, 0.7);
+  transform: translateX(4px);
+  box-shadow: 0 0 12px rgba(192, 160, 128, 0.15);
+}
+
+.choice-btn:active {
+  transform: scale(0.98);
+}
+
+.feedback-text {
+  font-style: italic;
+  color: #c0a060;
+  padding: 10px 16px;
+  margin: 10px 0;
+  border-left: 2px solid rgba(192, 160, 96, 0.4);
+  background: rgba(192, 160, 96, 0.06);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.8;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 身份选择 */
+.identity-title {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 4px;
+}
+
+.identity-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(192, 160, 128, 0.25);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.identity-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(192, 160, 128, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.identity-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+}
+
+.identity-tagline {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.identity-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+/* 结局 */
+.ending-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 16px 0;
+  letter-spacing: 3px;
+}
+
+.ending-text {
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 10px;
+  text-indent: 2em;
+}
+
+.epilogue {
+  font-style: italic;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 16px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.thanks {
+  text-align: center;
+  margin: 30px 0 16px;
+  font-size: 12px;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+.restart-btn {
+  display: block;
+  margin: 24px auto 0;
+  padding: 10px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0d8c8;
+  border: 1px solid rgba(192, 160, 128, 0.3);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.restart-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(192, 160, 128, 0.6);
+}
+
+/* HUD */
+#hud-pane {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 16px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.hud-watermark {
+  transition: color 0.5s;
+  opacity: 0.5;
+}
+
+.hud-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.hud-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #999;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.hud-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ddd;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 存档弹窗 */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal-box {
+  background: #1a1a2e;
+  border: 1px solid rgba(192, 160, 128, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.modal-title {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 3px;
+  color: #e0d8c8;
+}
+
+.modal-slot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-slot:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-slot.has-data {
+  border-color: rgba(192, 160, 128, 0.35);
+}
+
+.slot-label {
+  font-size: 13px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.slot-info {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.modal-close-btn {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 28px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #999;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ddd;
+}
+
+/* ===== 阵营主题 ===== */
+
+/* 绿党 - 墨绿 */
+body.theme-green {
+  background: #0d1f14;
+  color: #c8d8b0;
+}
+.theme-green .scene-title,
+.theme-green .identity-name,
+.theme-green .ending-title { color: #4ade80; }
+.theme-green .choice-btn { border-color: rgba(74, 222, 128, 0.3); }
+.theme-green .choice-btn:hover { border-color: rgba(74, 222, 128, 0.7); box-shadow: 0 0 12px rgba(74, 222, 128, 0.2); }
+.theme-green .hud-watermark { color: rgba(74, 222, 128, 0.5); }
+.theme-green .identity-card { border-color: rgba(74, 222, 128, 0.25); }
+.theme-green .identity-card:hover { border-color: rgba(74, 222, 128, 0.6); }
+.theme-green .epilogue { color: #4ade80; }
+
+/* 黑党 - 暗红 */
+body.theme-black {
+  background: #1a0e0e;
+  color: #d8c0b8;
+}
+.theme-black .scene-title,
+.theme-black .identity-name,
+.theme-black .ending-title { color: #c41e3a; }
+.theme-black .choice-btn { border-color: rgba(196, 30, 58, 0.3); }
+.theme-black .choice-btn:hover { border-color: rgba(196, 30, 58, 0.7); box-shadow: 0 0 12px rgba(196, 30, 58, 0.2); }
+.theme-black .hud-watermark { color: rgba(196, 30, 58, 0.5); }
+.theme-black .identity-card { border-color: rgba(196, 30, 58, 0.25); }
+.theme-black .identity-card:hover { border-color: rgba(196, 30, 58, 0.6); }
+.theme-black .epilogue { color: #c41e3a; }
+
+/* 死亡 - 血红 */
+body.theme-death {
+  background: #0a0a0a;
+  color: #b0a0a0;
+}
+.theme-death .scene-title,
+.theme-death .ending-title { color: #8b0000; }
+.theme-death .hud-watermark { color: rgba(139, 0, 0, 0.5); }
+.theme-death .epilogue { color: #8b0000; }
+.theme-death .thanks { color: #660000; }
+
+/* 铁王座 - 铁灰金 */
+body.theme-iron {
+  background: #16161a;
+  color: #d0c8b0;
+}
+.theme-iron .scene-title,
+.theme-iron .ending-title { color: #f0c040; }
+.theme-iron .choice-btn { border-color: rgba(240, 192, 64, 0.3); }
+.theme-iron .choice-btn:hover { border-color: rgba(240, 192, 64, 0.7); box-shadow: 0 0 12px rgba(240, 192, 64, 0.2); }
+.theme-iron .hud-watermark { color: rgba(240, 192, 64, 0.5); }
+.theme-iron .epilogue { color: #f0c040; }
+
+/* 中立 */
+body.theme-neutral {
+  background: #1a1a2e;
+  color: #e0d8c8;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  #game-root { padding: 12px; }
+  .scene-title { font-size: 17px; }
+  .narrative-line { font-size: 13px; }
+  #ascii-pane pre.ascii-art { font-size: 8px; }
+  .identity-card { padding: 12px 14px; }
+  .identity-name { font-size: 16px; }
+}

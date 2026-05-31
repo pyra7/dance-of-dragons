@@ -1,0 +1,15 @@
+/* ascii.css - ASCII 艺术等宽字体样式 */
+pre.ascii-art {
+  font-family: 'Courier New', 'SimHei', monospace !important;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: pre;
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+}
+
+/* 确保等宽字体在所有平台一致 */
+code, pre, .ascii-art, .identity-name, .scene-title, .ending-title {
+  font-family: 'Courier New', 'Consolas', 'SimHei', 'Microsoft YaHei', monospace;
+}
