@@ -263,14 +263,23 @@ body {
 .hud-watermark {
   transition: color 0.5s;
   font-family: 'Courier New', 'SimHei', monospace;
-  font-size: 10px;
-  line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.3;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 12px;
   background: none;
   border: none;
   white-space: pre;
-  animation: watermarkPulse 4s ease-in-out infinite;
+  color: #e0c060;
+  text-shadow: 0 0 6px rgba(224, 192, 96, 0.4);
+  animation: watermarkPulse 3s ease-in-out infinite;
+}
+
+@keyframes watermarkPulse {
+  0%, 100% { opacity: 0.5; text-shadow: 0 0 4px currentColor; }
+  40% { opacity: 1; }
+  50% { opacity: 0.9; text-shadow: 0 0 14px currentColor, 0 0 28px currentColor; }
+  60% { opacity: 1; }
 }
 
 @keyframes watermarkPulse {

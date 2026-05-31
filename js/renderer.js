@@ -110,10 +110,13 @@ var Renderer = (function () {
   function showSplash(callback) {
     clearAll();
     setTheme('neutral');
-    showAscii('splash_dragon');
+    showAscii('splash_seal');
 
     setTimeout(function () {
-      if (callback) callback();
+      showAscii('splash_dragon');
+      setTimeout(function () {
+        if (callback) callback();
+      }, 2000);
     }, 1500);
   }
 
