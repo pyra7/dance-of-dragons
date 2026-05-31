@@ -109,15 +109,17 @@ var Renderer = (function () {
 
   function showSplash(callback) {
     clearAll();
+    document.body.classList.add('splash-mode');
     setTheme('neutral');
     showAscii('splash_seal');
 
     setTimeout(function () {
       showAscii('splash_dragon');
       setTimeout(function () {
+        document.body.classList.remove('splash-mode');
         if (callback) callback();
       }, 2000);
-    }, 1500);
+    }, 1800);
   }
 
   function showIdentitySelection(identities, callback) {
